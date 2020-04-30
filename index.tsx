@@ -1,7 +1,6 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
-import {HotkeysEvent} from './keys/hotkey';
-import Hotkeys from './keys/hotkeys';
+import Hotkeys, {HotkeysEvent} from './key';
 
 export type OnKeyFun = (shortcut: string, evn: KeyboardEvent, handle: HotkeysEvent) => void;
 
