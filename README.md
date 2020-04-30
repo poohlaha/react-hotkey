@@ -46,4 +46,70 @@ ps: type是用于区分快捷键分类.
     "splitKey":"+"
 }
  ```
+ 
+ ## Demo
+ ```
+import React from 'react';
+import Hotkeys from 'react-hot-key';
+
+export default class ReactHotkeyDemo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: 'ready to listening keydown and keyup',
+    }
+  }
+  
+  onKeyUp(keyName, e, handle) {
+    console.log("test:onKeyUp", e, handle)
+    this.setState({
+      text: `onKeyUp ${keyName}`,
+    });
+  }
+  
+  onKeyDown(keyName, e, handle) {
+    console.log("test:onKeyDown", keyName, e, handle)
+    this.setState({
+      text: `onKeyDown ${keyName}`,
+    });
+  }
+  
+  render() {
+    /* return (
+      <Hotkeys 
+        keyName="shift+a,alt+s" 
+        onKeyDown={this.onKeyDown.bind(this)}
+        onKeyUp={this.onKeyUp.bind(this)}
+      >
+        <div style={{ padding: "100px" }}>
+          {this.state.text}
+        </div>
+      </Hotkeys>
+    ) */
+    
+     return (
+      <Hotkeys 
+         keyName={[
+            {
+                type: 'component',
+                keys: ['T', 'L', 'Alt+s', '1']
+            },
+            {
+                type: 'operation',
+                keys: ['ctrl+M', 'p', 'Alt+↑', '↓']
+            }
+        ]}
+        onKeyDown={this.onKeyDown.bind(this)}
+        onKeyUp={this.onKeyUp.bind(this)}
+      >
+        <div style={{ padding: "100px" }}>
+          {this.state.text}
+        </div>
+      </Hotkeys>
+    )
+    
+  }
+}
+
+ ```
 
