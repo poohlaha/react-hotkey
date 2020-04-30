@@ -1,4 +1,4 @@
-import Util from './util';
+import Util from './utils';
 import {_handlers, _keyMap, _modifier, _mods} from "./keys";
 
 const HotKeys = (function (window) {
